@@ -1,74 +1,56 @@
-<!DOCTYPE html><html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BOJ Token</title>
-  <style>
-    body {
-      background-color: #ffffff;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 40px;
-      color: #333;
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head><body>
+  <header>
+    <h1 data-aos="fade-down">Welcome to BOJ Token</h1>
+    <nav>
+      <a href="#buy">Buy</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>  <section id="intro" data-aos="fade-up">
+    <h2>About BOJ Token</h2>
+    <p>The golden lion of African crypto revolution. Built on BSC, BOJ Token powers decentralized finance and unity.</p>
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/your_intro_video_id" title="BOJ Token Intro Video" frameborder="0" allowfullscreen></iframe>
+  </section>  <section id="buy" data-aos="fade-up">
+    <h2>Buy BOJ Token</h2>
+    <p><a href="https://pancakeswap.finance/swap?outputCurrency=0x77A8C71Bd15Ed4F0CCfEcE19d9DA53eFfD14aB60">Buy on PancakeSwap</a></p>
+  </section>  <section id="live" data-aos="fade-up">
+    <h2>Live Token Stats</h2>
+    <p>Total Supply: <span id="supply">Loading...</span></p>
+    <p>Holders: <span id="holders">Loading...</span></p>
+    <p>Market Cap: <span id="marketcap">Loading...</span></p>
+  </section>  <section id="roadmap" data-aos="fade-up">
+    <h2>Roadmap</h2>
+    <ul>
+      <li>Q1: Token Launch</li>
+      <li>Q2: Exchange Listings</li>
+      <li>Q3: Community Growth</li>
+      <li>Q4: Mobile App Launch</li>
+    </ul>
+  </section>  <section id="contact" data-aos="fade-up">
+    <h2>Contact Us</h2>
+    <form action="https://formsubmit.co/ouaorganization@gmail.com" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>  <footer>
+    <p>© 2025 BOJ Token - Powered by OUA</p>
+  </footer>  <script>
+    AOS.init();
+    async function loadTokenData() {
+      const res = await fetch('https://api.bscscan.com/api?module=token&action=tokeninfo&contractaddress=0x77A8C71Bd15Ed4F0CCfEcE19d9DA53eFfD14aB60&apikey=YourAPIKey');
+      const data = await res.json();
+      document.getElementById('supply').textContent = data.result.totalSupply;
+      document.getElementById('holders').textContent = data.result.holdersCount;
+      document.getElementById('marketcap').textContent = data.result.marketCap;
     }
-    .logo {
-      width: 150px;
-      height: auto;
-      margin-bottom: 20px;
-    }
-    .container {
-      max-width: 800px;
-      margin: auto;
-    }
-    h1 {
-      font-size: 2.5rem;
-      color: #d4af37;
-    }
-    p {
-      font-size: 1.2rem;
-    }
-    .info {
-      margin-top: 30px;
-      font-size: 1rem;
-    }
-    .address {
-      font-family: monospace;
-      background: #f4f4f4;
-      padding: 10px;
-      border-radius: 5px;
-      display: inline-block;
-      margin-top: 10px;
-    }
-    footer {
-      margin-top: 50px;
-      font-size: 0.9rem;
-      color: #aaa;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <img src="https://ojijointernational.github.io/boj-token-site/boj-logo.png" alt="BOJ Token Logo" class="logo">
-    <h1>BOJ Token</h1>
-    <p><em>Slogan: Powering the Future of African Prosperity</em></p><div class="info">
-  <h2>Smart Contract Address (BSC):</h2>
-  <div class="address">0x77A8C71Bd15Ed4F0CCfEcE19d9DA53eFfD14aB60</div>
-</div>
-
-<div class="info">
-  <h2>Token Symbol:</h2>
-  <div class="address">BOJ</div>
-</div>
-
-<div class="info">
-  <h2>Network:</h2>
-  <p>Binance Smart Chain (BSC)</p>
-</div>
-
-<footer>
-  &copy; 2025 BOJ Token. All rights reserved.
-</footer>
-
-  </div>
-</body>
-</html>
+    loadTokenData();
+  </script></body></html>
